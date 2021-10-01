@@ -39,7 +39,14 @@
 
   &.label-icon--warning {
     .sd-list-item__time__schedule {
+<<<<<<< Updated upstream
         color: $orange !important;
+=======
+        color: var(--sd-time-schedule-color) !important;
+        font-weight: 500;
+        vertical-align: text-top;
+        padding-left: 0;
+>>>>>>> Stashed changes
     }
 
     .label {
@@ -108,6 +115,9 @@
 
 // Fix second subnav's z-index in Planning page
 #sd-planning-react-container {
+  .subnav {
+    z-index: 1003 !important;
+  }
   .subnav + .subnav {
     z-index: 1002 !important;
   }

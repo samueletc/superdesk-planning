@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import {Popup, Content, Header, Footer} from '../../Popup';
 import {Button} from '../../';
+import {IconButton} from 'superdesk-ui-framework/react';
 import {DayPicker} from './DayPicker';
 import {MonthPicker} from './MonthPicker';
 import {YearPicker} from './YearPicker';
@@ -198,11 +199,10 @@ export class DateInputPopup extends React.Component {
                         />
                     </div>
                     <div className="date-popup__header-row date-popup__header-row--tools">
-                        <Button
-                            color="default"
-                            icon="icon-chevron-left-thin"
+                        <IconButton
+                            icon="chevron-left-thin"
                             onClick={this.getFurtherValues.bind(this, 0)}
-                        />
+                        ></IconButton>
                         <Button
                             color="default"
                             className="btn--mode"
@@ -212,11 +212,10 @@ export class DateInputPopup extends React.Component {
                         >
                             <strong>{this.state.modeTitle}</strong>
                         </Button>
-                        <Button
-                            color="default"
-                            icon="icon-chevron-right-thin"
+                        <IconButton
+                            icon="chevron-right-thin"
                             onClick={this.getFurtherValues.bind(this, 1)}
-                        />
+                        ></IconButton>
                     </div>
                 </Header>
                 <Content>

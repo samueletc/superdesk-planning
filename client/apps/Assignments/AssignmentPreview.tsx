@@ -14,6 +14,8 @@ import {LockContainer} from '../../components/';
 import {ArchivePreview} from '../../components/Archive';
 import {AssignmentPreviewContainer, AssignmentHistory} from '../../components/Assignments';
 
+
+
 const TABS = {
     ASSIGNMENT: 0,
     CONTENT: 1,

@@ -2,7 +2,7 @@
 
 .Datetime {
     &--dark-text {
-        color: $grayDark;
+        color: var(--color-text);
         font-weight: 400;
     }
 }

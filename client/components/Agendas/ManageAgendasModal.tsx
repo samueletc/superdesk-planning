@@ -5,7 +5,8 @@ import {isEqual} from 'lodash';
 import {Modal} from '../index';
 import {gettext} from '../../utils';
 import {MODALS, PRIVILEGES, KEYCODES} from '../../constants';
-import {SubNav, StretchBar, Button} from '../UI/SubNav';
+
+import {ButtonGroup, Button, SubNav} from 'superdesk-ui-framework/react';
 import {ColumnBox} from '../UI';
 import * as selectors from '../../selectors';
 import * as actions from '../../actions';
@@ -81,18 +82,19 @@ export class ManageAgendasComponent extends React.Component {
                 </Modal.Header>
                 <Modal.Body noPadding={true} noScroll>
                     {!!privileges[PRIVILEGES.AGENDA_MANAGEMENT] && (
-                        <SubNav>
-                            <StretchBar />
+                        <SubNav> 
+                            <ButtonGroup align="right" padded={true}>
                             {!this.state.editorOpen && (
                                 <Button
-                                    right={true}
-                                    buttonClassName="btn btn--primary"
+                                    text={gettext('Add New Agenda')}
+                                    type='primary'
+                                    icon="plus-sign"
                                     onClick={this.toggleEditorOpen.bind(this)}
-                                >
-                                    <i className="icon-plus-sign icon-white" />
-                                    {gettext('Add New Agenda')}
-                                </Button>
+                                />
+                                    
+
                             )}
+                            </ButtonGroup>
                         </SubNav>
                     )}
                     <ColumnBox.Box verticalScroll={true}>

@@ -24,16 +24,7 @@ export class PreviewPanelComponent extends React.Component {
         this.tools = [
             {
                 icon: 'icon-close-small',
-                onClick: (event) => {
-                    this.props.closePreview();
-
-                    document.dispatchEvent(
-                        new CustomEvent(
-                            'superdesk-planning.close-preview',
-                            {...event, detail: {itemId: this.props.itemId}},
-                        ),
-                    );
-                },
+                onClick: this.props.closePreview,
                 title: gettext(TOOLTIPS.close),
             },
         ];
@@ -132,11 +123,7 @@ export class PreviewPanelComponent extends React.Component {
         const isEvent = this.props.itemType === ITEM_TYPE.EVENT;
 
         return (
-            <SidePanel
-                className="content"
-                shadowRight={true}
-                bg00={true}
-            >
+            <SidePanel shadowRight={true} bg00={true}>
                 <Header darkBlue={isEvent} darker={!isEvent}>
                     <Tools tools={this.tools} />
                     <Tabs
@@ -147,7 +134,7 @@ export class PreviewPanelComponent extends React.Component {
                     />
                 </Header>
                 {!this.props.previewLoading && this.props.item && (
-                    <Content className="core-content">
+                    <Content>
                         {currentTab.label !== 'History' && (
                             <PreviewHeader
                                 item={this.props.item}
@@ -155,15 +142,11 @@ export class PreviewPanelComponent extends React.Component {
                                 showUnlock={this.props.showUnlock}
                             />
                         )}
-                        <div tabIndex={-1} id="preview-content">
-                            <h3 className="a11y-only">{gettext('Item preview')}</h3>
-
-                            <RenderTab
-                                item={this.props.item}
-                                hideRelatedItems={this.props.hideRelatedItems}
-                                hideEditIcon={this.props.hideEditIcon}
-                            />
-                        </div>
+                        <RenderTab
+                            item={this.props.item}
+                            hideRelatedItems={this.props.hideRelatedItems}
+                            hideEditIcon={this.props.hideEditIcon}
+                        />
                     </Content>
                 )}
             </SidePanel>
