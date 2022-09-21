@@ -5,7 +5,7 @@ import {SUBNAV_VIEW_SIZE} from './PlanningListSubNav';
 
 import {DateInputPopup} from '../../components/UI/Form/DateInput/DateInputPopup';
 import {timeUtils, gettext} from '../../utils';
-import {Button} from 'superdesk-ui-framework/react';
+import {Button, IconButton} from 'superdesk-ui-framework/react';
 
 interface IProps {
     date: moment.Moment;
@@ -50,7 +50,7 @@ export class SubNavDatePicker extends React.Component<IProps, IState> {
 
     render() {
         return (
-            <span>
+            <span className="sd-display--contents">
                 <span
                     className="subnav-calendar__date-picker sd-text__normal cursor-pointer"
                     onClick={this.togglePopup}
@@ -65,12 +65,9 @@ export class SubNavDatePicker extends React.Component<IProps, IState> {
                         <span className="dropdown__caret" />
                     </span>
                 ) : (
-                    <Button
-                        size="normal"
+                    <IconButton
                         icon="calendar"
-                        text={gettext('Date picker')}
-                        shape="round"
-                        iconOnly={true}
+                        ariaValue={gettext('Date picker')}
                         onClick={this.togglePopup}
                     />
                 )}

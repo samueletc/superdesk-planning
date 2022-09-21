@@ -73,6 +73,7 @@ class ArchivePreviewComponent extends React.Component {
                 <div
                     className={classNames(
                         'ArchivePreview__header',
+                        'preview-header',
                         'side-panel__content-block',
                         'side-panel__content-block--pad-small',
                         'side-panel__content-block--flex',
@@ -80,7 +81,7 @@ class ArchivePreviewComponent extends React.Component {
                     )}
                 >
                     {this.state.headerOpen && (
-                        <div className="ArchivePreview__header-left side-panel__content-block-inner">
+                        <div className="preview-header__icon-block side-panel__content-block-inner">
                             <div>
                                 <span
                                     data-sd-tooltip={`Article Type: ${archive.type}`}
@@ -114,7 +115,7 @@ class ArchivePreviewComponent extends React.Component {
 
                     {this.state.headerOpen && (
                         <div
-                            className="ArchivePreview__header-middle side-panel__content-block-inner
+                            className="preview-header__main-block side-panel__content-block-inner
                         side-panel__content-block-inner--grow"
                         >
                             {get(archive, 'slugline') &&
@@ -172,7 +173,7 @@ class ArchivePreviewComponent extends React.Component {
 
                     {this.state.headerOpen && (
                         <div
-                            className="ArchivePreview__header-right side-panel__content-block-inner
+                            className="preview-header__side-block side-panel__content-block-inner
                         side-panel__content-block-inner--right"
                         >
                             {archiveType === 'text' && (

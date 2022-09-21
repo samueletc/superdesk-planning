@@ -53,6 +53,7 @@
     .sd-column-box__main-column__items {
         overflow: auto !important;
         width: 100%;
+        height: calc(100vh - (4.8rem + 4.8rem * 2 + 30px));
 
         &--featured {
             // 68px = for featured list header including overlapping margin of header and list
@@ -95,6 +96,7 @@
         line-height: 4rem;
         text-align: center;
         color: $grayLight;
+        margin-bottom: 0;
     }
 }
 

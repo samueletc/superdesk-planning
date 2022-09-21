@@ -126,12 +126,12 @@ export class PlanningSubNavComponent extends React.PureComponent<IProps> {
                         showFilters={this.props.showFilters ?? true}
                         privileges={this.props.privileges}
                     />
-                    <ButtonGroup align="right">
-                        <Dropdown items={this.viewOptions}>
+                    <ButtonGroup align="end">
+                        {/* <Dropdown items={this.viewOptions}> TODO: To be fixed
                             <button className="sd-navbtn" aria-label={gettext('Change view')}>
                                 <i className={listViewIcon} />
                             </button>
-                        </Dropdown>
+                        </Dropdown> */}
                         <ActionsSubnavDropdown
                             openAgendas={this.props.openAgendas}
                             openEventsPlanningFiltersModal={this.props.openEventsPlanningFiltersModal}

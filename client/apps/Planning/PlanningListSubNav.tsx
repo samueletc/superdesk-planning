@@ -171,7 +171,7 @@ class PlanningListSubNavComponent extends React.Component<IProps, IState> {
                     <ButtonGroup align="inline">
                         <FilterSubnavDropdown viewSize={this.state.viewSize} />
                     </ButtonGroup>
-                    <ButtonGroup align="right">
+                    <ButtonGroup align="end">
                         {this.props.listViewType === LIST_VIEW_TYPE.LIST ? (
                             <React.Fragment>
                                 <div
@@ -238,12 +238,12 @@ class PlanningListSubNavComponent extends React.Component<IProps, IState> {
                                             onClick={() => this.props.jumpTo('FORWARD')}
                                             icon="chevron-right-thin"
                                         />
-                                        <Dropdown items={this.intervalOptions}>
+                                        {/* <Dropdown items={this.intervalOptions}> TODO: To be fixed
                                             <span className="sd-margin-l--1 sd-margin-r--3">
                                                 {intervalText}
                                                 <span className="dropdown__caret" />
                                             </span>
-                                        </Dropdown>
+                                        </Dropdown> */}
                                     </React.Fragment>
                                 )}
                             </React.Fragment>

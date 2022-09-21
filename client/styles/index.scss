@@ -39,14 +39,10 @@
 
   &.label-icon--warning {
     .sd-list-item__time__schedule {
-<<<<<<< Updated upstream
-        color: $orange !important;
-=======
         color: var(--sd-time-schedule-color) !important;
         font-weight: 500;
         vertical-align: text-top;
         padding-left: 0;
->>>>>>> Stashed changes
     }
 
     .label {

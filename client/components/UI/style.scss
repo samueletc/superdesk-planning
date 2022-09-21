@@ -220,13 +220,13 @@ textarea.sd-line-input__input {
 
 // Make dropdown-toggle/search button/checkboxes visibly focusable
 .dropdown-toggle:focus {
-    box-shadow: 0 0 0 3px rgba(94, 169, 200, 0.30);
+    box-shadow: 0 0 0 3px var(--sd-colour-interactive--alpha-30);
 }
 
 .sd-searchbar__search-btn:focus {
-    box-shadow: 0 0 0 3px rgba(94, 169, 200, 0.70);
+    box-shadow: 0 0 0 3px var(--sd-colour-interactive--alpha-30);
 }
 
 .sd-check__wrapper:focus {
-    box-shadow: 0 0 0 3px rgba(94, 169, 200, 0.30);
+    box-shadow: 0 0 0 3px var(--sd-colour-interactive--alpha-30);
 }

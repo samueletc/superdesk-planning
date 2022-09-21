@@ -1,4 +1,3 @@
-@import '~superdesk-ui-framework/app/styles/variables/_colors.scss';
 
 .select-icon__overlay-panel {
     z-index: 1500 !important;
@@ -8,14 +7,15 @@
 .select-icon__panel {
     width: 450px;
     max-height: 550px;
-    background-color: var(--color-bg-00);
+    background-color: var(--color-dropdown-menu-Bg);
     display: flex;
     flex-direction: column;
+    border-radius: var(--b-radius--medium);
 }
 
 .select-icon__header {
     padding: 1rem;
-    box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 0 0 var(--sd-colour-line--light);
 }
 
 .select-icon__body {
@@ -28,23 +28,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: $sd-text;
+    color: var(--color-text);
+    border-radius: var(--b-radius--medium);
 
     &:hover, &:focus {
-        color: $sd-blue;
+        color: var(--sd-colour-interactive);
         cursor: pointer;
 
         i {
-            color: $sd-blue;
+            color: var(--sd-colour-interactive);
         }
     }
 
     &:hover {
-        background: $sd-colour-background__menu-item--hover;
+        background: var(--sd-colour-interactive--alpha-20);
     }
 
     &:focus {
-        outline: 2px solid $sd-colour-interactive__base;
+        outline: 2px solid var(--sd-colour-interactive);
         outline-offset: -2px;
     }
 }
@@ -65,7 +66,7 @@
 
     .btn:focus {
         background-color: var(--color-input-bg--focus);
-        box-shadow: 0 1px 0 0 $sd-blue;
+        box-shadow: 0 1px 0 0 var(--sd-colour-interactive);
     }
 }
 

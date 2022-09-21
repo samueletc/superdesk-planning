@@ -17,8 +17,8 @@ interface IProps {
         };
     }>;
     tooltipFlow: 'up' | 'right' | 'down' | 'left';
-    inline: boolean;
-    className: string;
+    inline?: boolean;
+    className?: string;
 }
 
 export class PriorityLabel extends React.PureComponent<IProps> {

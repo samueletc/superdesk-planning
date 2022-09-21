@@ -125,7 +125,7 @@ class SearchBox extends React.Component<IProps, IState> {
                     onClick={() => this.props.search(this.state.inputValue)}
                     aria-label={gettext('Search')}
                 >
-                    <i className="big-icon--chevron-right" />
+                    <i className="icon-chevron-right-thin" />
                 </button>
             </div>
         );

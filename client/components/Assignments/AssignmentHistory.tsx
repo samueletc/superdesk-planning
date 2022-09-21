@@ -112,9 +112,9 @@ class AssignmentHistoryComponent extends React.Component {
 
         return (
             <ContentBlock>
-                <ul className="history-list">
+                <ul className="simple-list simple-list--dotted">
                     {this.props.assignmentHistoryItems.map((historyItem) => (
-                        <li className="item" key={historyItem._id}>
+                        <li className="simple-list__item" key={historyItem._id}>
                             <div>
                                 {this.transcribedHistoryAction(historyItem)}
                                 <span className="user-name">{getHistoryActionUserName(historyItem.user_id)}</span>
