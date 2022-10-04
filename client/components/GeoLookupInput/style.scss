@@ -46,19 +46,19 @@
         text-decoration: none;
         text-align: left;
         &:hover, &:focus {
-            background: $dropdownLinkBackgroundHover;
+            background: $sd-colour-background__menu-item--hover;
             text-decoration: none;
             cursor: pointer;
         }
         &:active {
-            background: darken($dropdownLinkBackgroundHover, 10%);
+            background: $sd-colour-background__menu-item--active;
         }
         &.disabled:hover, &[disabled]:hover {
             background: none;
             cursor: default;
         }
         &--active {
-            background: $sd-hover;
+            background: $sd-colour-background__menu-item--active;
         }
 
         .spinner {
