@@ -69,7 +69,7 @@ export function addItems(resource, items) {
  */
 export function login() {
     cy.log('Common.App.login');
-    cy.get('#login-username')
+    cy.get('#login-username', {timeout: 30000})
         .clear()
         .type('admin')
         .should('have.value', 'admin');
@@ -89,10 +89,9 @@ export function login() {
  * @param {string} url - The initial URL to visit
  */
 export function setup(params, url) {
-    cy.visit('/blank.html');
     cy.log('Common.App.setup');
-    resetApp(params.fixture_profile);
     cy.visit(url);
+    resetApp(params.fixture_profile);
 }
 
 /**

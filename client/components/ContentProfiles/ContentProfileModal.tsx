@@ -17,7 +17,7 @@ import {getLanguages} from '../../selectors/vocabs';
 import {getFieldNameTranslated, isProfileFieldEnabled} from '../../utils/contentProfiles';
 import {getErrorMessage} from '../../utils';
 
-import {Button, ButtonGroup, Tabs, TabContent, TabPanel} from 'superdesk-ui-framework/react';
+import {Button, ButtonGroup, Tabs, TabLabel, TabContent, TabPanel} from 'superdesk-ui-framework/react';
 import {Modal} from '../index';
 
 import {GroupTab, GroupTabComponent} from './GroupTab';
@@ -41,8 +41,14 @@ interface IProps {
     closeModal(): void
 }
 
+enum TAB_INDEX {
+    GROUPS = 0,
+    FIELDS = 1,
+    EMBEDDED = 2,
+}
+
 interface IState {
-    activeTabId: 'groups' | 'content_fields' | 'embedded_fields';
+    activeTabId: TAB_INDEX;
     profile: IPlanningContentProfile;
     embeddedProfile?: IPlanningContentProfile; // Used for Coverage Profile
     saving: boolean;
@@ -64,7 +70,7 @@ class ContentProfileModalComponent extends React.Component<IProps, IState> {
         super(props);
 
         this.state = {
-            activeTab: 0,
+            activeTabId: TAB_INDEX.GROUPS,
             profile: this.reloadOriginal(this.props.mainProfile.profile),
             embeddedProfile: this.props.embeddedProfile == null ?
                 null :
@@ -400,16 +406,23 @@ class ContentProfileModalComponent extends React.Component<IProps, IState> {
     render() {
         const {gettext} = superdeskApi.localization;
         const tabLabels = [(
-            <span key="groups" id="groups">
-                {gettext('Groups')}
-            </span>
+            <TabLabel
+                key="groups"
+                label={gettext('Groups')}
+                indexValue={TAB_INDEX.GROUPS}
+            />
         ), (
-            <span key="content_fields" id="content_fields">
-                {this.props.mainProfile.label ?? gettext('Content Fields')}
-            </span>
+            <TabLabel
+                key="content_fields"
+                label={this.props.mainProfile.label ?? gettext('Content Fields')}
+                indexValue={TAB_INDEX.FIELDS}
+            />
         )];
         const tabPanels = [(
-            <TabPanel key="groups" id="groups">
+            <TabPanel
+                key="groups"
+                indexValue={TAB_INDEX.GROUPS}
+            >
                 <GroupTab
                     ref={this.groupTab}
                     profile={this.state.profile}
@@ -419,7 +432,10 @@ class ContentProfileModalComponent extends React.Component<IProps, IState> {
                 />
             </TabPanel>
         ), (
-            <TabPanel key="content_fields" id="content_fields">
+            <TabPanel
+                key="content_fields"
+                indexValue={TAB_INDEX.FIELDS}
+            >
                 <FieldTab
                     ref={this.fieldTab}
                     profile={this.state.profile}
@@ -435,12 +451,17 @@ class ContentProfileModalComponent extends React.Component<IProps, IState> {
 
         if (this.props.embeddedProfile != null) {
             tabLabels.push((
-                <span key="embedded_fields" id="embedded_fields">
-                    {this.props.embeddedProfile.label ?? gettext('Embedded Fields')}
-                </span>
+                <TabLabel
+                    key="embedded_fields"
+                    label={this.props.embeddedProfile.label ?? gettext('Embedded Fields')}
+                    indexValue={TAB_INDEX.EMBEDDED}
+                />
             ));
             tabPanels.push((
-                <TabPanel key="embedded_fields" id="embedded_fields">
+                <TabPanel
+                    key="embedded_fields"
+                    indexValue={TAB_INDEX.EMBEDDED}
+                >
                     <FieldTab
                         ref={this.embeddedFieldTab}
                         profile={this.state.embeddedProfile}
@@ -480,10 +501,7 @@ class ContentProfileModalComponent extends React.Component<IProps, IState> {
                         <div className="sd-loader" />
                     )}
                     <form className="planning-profile-form" onSubmit={(e) => e.preventDefault()}>
-                        <Tabs
-                            onClick={this.changeTab}
-                            activePanel={this.state.activeTabId}
-                        >
+                        <Tabs onClick={this.changeTab}>
                             {tabLabels}
                         </Tabs>
                         <TabContent activePanel={this.state.activeTabId}>
@@ -492,7 +510,7 @@ class ContentProfileModalComponent extends React.Component<IProps, IState> {
                     </form>
                 </Modal.Body>
                 <Modal.Footer flex={true}>
-                    <ButtonGroup align="right">
+                    <ButtonGroup align="end">
                         <Button
                             text={this.state.dirty ?
                                 gettext('Cancel') :

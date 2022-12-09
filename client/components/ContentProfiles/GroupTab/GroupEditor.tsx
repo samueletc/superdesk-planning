@@ -43,6 +43,7 @@ export class GroupEditor extends React.PureComponent<IProps> {
                 <div className="form__row">
                     <Input
                         label={language.name}
+                        type="text"
                         required={true}
                         onChange={this.props.updateGroupTranslation.bind(null, language.qcode)}
                         value={this.props.group.translations.name[language.qcode]}
@@ -64,7 +65,7 @@ export class GroupEditor extends React.PureComponent<IProps> {
                         {gettext('Details')}
                     </div>
                     <div className="side-panel__sliding-toolbar">
-                        <ButtonGroup align="right">
+                        <ButtonGroup align="end">
                             <Button
                                 text={gettext('Cancel')}
                                 onClick={() => this.props.onCancel()}
@@ -95,6 +96,7 @@ export class GroupEditor extends React.PureComponent<IProps> {
                                 <div className="form__item">
                                     <Input
                                         label={gettext('Name')}
+                                        type="text"
                                         required={true}
                                         onChange={this.props.updateGroupAttribute.bind(null, 'name')}
                                         value={this.props.group.name}
