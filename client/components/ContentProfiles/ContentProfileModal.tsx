@@ -17,7 +17,7 @@ import {getLanguages} from '../../selectors/vocabs';
 import {getFieldNameTranslated, isProfileFieldEnabled} from '../../utils/contentProfiles';
 import {getErrorMessage} from '../../utils';
 
-import {Button, ButtonGroup, TabNav, TabItem, TabContent, TabPanel} from 'superdesk-ui-framework/react';
+import {Button, ButtonGroup, Tabs, TabContent, TabPanel} from 'superdesk-ui-framework/react';
 import {Modal} from '../index';
 
 import {GroupTab, GroupTabComponent} from './GroupTab';
@@ -400,13 +400,13 @@ class ContentProfileModalComponent extends React.Component<IProps, IState> {
     render() {
         const {gettext} = superdeskApi.localization;
         const tabLabels = [(
-            <TabItem key="groups" id="groups">
+            <span key="groups" id="groups">
                 {gettext('Groups')}
-            </TabItem>
+            </span>
         ), (
-            <TabItem key="content_fields" id="content_fields">
+            <span key="content_fields" id="content_fields">
                 {this.props.mainProfile.label ?? gettext('Content Fields')}
-            </TabItem>
+            </span>
         )];
         const tabPanels = [(
             <TabPanel key="groups" id="groups">
@@ -435,9 +435,9 @@ class ContentProfileModalComponent extends React.Component<IProps, IState> {
 
         if (this.props.embeddedProfile != null) {
             tabLabels.push((
-                <TabItem key="embedded_fields" id="embedded_fields">
+                <span key="embedded_fields" id="embedded_fields">
                     {this.props.embeddedProfile.label ?? gettext('Embedded Fields')}
-                </TabItem>
+                </span>
             ));
             tabPanels.push((
                 <TabPanel key="embedded_fields" id="embedded_fields">
@@ -480,12 +480,12 @@ class ContentProfileModalComponent extends React.Component<IProps, IState> {
                         <div className="sd-loader" />
                     )}
                     <form className="planning-profile-form" onSubmit={(e) => e.preventDefault()}>
-                        <TabNav
+                        <Tabs
                             onClick={this.changeTab}
                             activePanel={this.state.activeTabId}
                         >
                             {tabLabels}
-                        </TabNav>
+                        </Tabs>
                         <TabContent activePanel={this.state.activeTabId}>
                             {tabPanels}
                         </TabContent>

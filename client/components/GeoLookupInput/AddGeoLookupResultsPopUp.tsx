@@ -7,7 +7,7 @@ import {KEYCODES} from '../../constants';
 
 import {uiUtils, onEventCapture} from '../../utils';
 
-import {Button, TabNav, TabItem, TabContent, TabPanel} from 'superdesk-ui-framework/react';
+import {Button, Tabs, TabContent, TabPanel} from 'superdesk-ui-framework/react';
 import {Popup, Content} from '../UI/Popup';
 import {LocationLookupResultItem} from './LocationLookupResultItem';
 
@@ -140,16 +140,16 @@ export class AddGeoLookupResultsPopUp extends React.Component<IProps, IState> {
         const suggests = get(this.props.suggests, 'length') > 0 ?
             this.props.suggests : [];
         const tabLabels = [(
-            <TabItem key="internal" id="internal">
+            <span key="internal" id="internal">
                 {gettext('Existing Locations')}
-            </TabItem>
+            </span>
         )];
 
         if (this.props.showExternalSearch) {
             tabLabels.push((
-                <TabItem key="external" id="external">
+                <span key="external" id="external">
                     {gettext('Search OpenStreetMap')}
-                </TabItem>
+                </span>
             ));
         }
 
@@ -169,13 +169,13 @@ export class AddGeoLookupResultsPopUp extends React.Component<IProps, IState> {
                     noPadding={true}
                     className="addgeolookup__suggests-wrapper"
                 >
-                    <TabNav
+                    <Tabs
                         onClick={this.onTabChange}
                         activePanel={this.state.activeTabId}
                         size="small"
                     >
                         {tabLabels}
-                    </TabNav>
+                    </Tabs>
                     <TabContent activePanel={this.state.activeTabId}>
                         <TabPanel id="internal">
                             <ul
